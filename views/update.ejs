@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>อัปเดตความคืบหน้า</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-header bg-warning text-dark py-3 rounded-top-4 border-0">
+                        <h5 class="mb-0 fw-bold text-center">อัปเดตความคืบหน้าคำสัญญา</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-4 text-center">
+                            <h6 class="text-muted mb-1">นักการเมือง: <%= promise.politician_name %></h6>
+                            <p class="fw-bold"><%= promise.details %></p>
+                        </div>
+
+                        <form action="/promises/<%= promise.promise_id %>/update" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">รายละเอียดความคืบหน้า</label>
+                                <textarea name="update_details" class="form-control" rows="4" placeholder="ระบุสิ่งที่ดำเนินการไปแล้ว..." required></textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">สถานะใหม่</label>
+                                <select name="status" class="form-select form-select-lg">
+                                    <option value="ยังไม่เริ่ม" <%= promise.status === 'ยังไม่เริ่ม' ? 'selected' : '' %>>ยังไม่เริ่ม</option>
+                                    <option value="กำลังดำเนินการ" <%= promise.status === 'กำลังดำเนินการ' ? 'selected' : '' %>>กำลังดำเนินการ</option>
+                                    <option value="เงียบหาย" <%= promise.status === 'เงียบหาย' ? 'selected' : '' %>>เงียบหาย (จะอัปเดตต่อไม่ได้)</option>
+                                </select>
+                                <small class="text-danger mt-2 d-block">* โปรดระวัง: หากเลือกสถานะ "เงียบหาย" ระบบจะล็อกการอัปเดตทันที</small>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">บันทึกข้อมูล</button>
+                                </div>
+                                <div class="col-6">
+                                    <a href="/promises/<%= promise.promise_id %>" class="btn btn-outline-secondary w-100 py-2">ยกเลิก</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

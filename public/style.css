@@ -1,0 +1,36 @@
+body { 
+    font-family: sans-serif; 
+    line-height: 1.6; 
+    margin: 20px; 
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-bottom: 20px; 
+}
+th, td { 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    text-align: left; 
+}
+th { 
+    background-color: #f4f4f4; 
+}
+.status-เงียบหาย { 
+    color: red; 
+    font-weight: bold; 
+}
+.status-กำลังดำเนินการ { 
+    color: orange; 
+}
+.status-ยังไม่เริ่ม { 
+    color: gray; 
+}
+.btn { 
+    display: inline-block; 
+    padding: 5px 15px; 
+    background: #007bff; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 3px; 
+}
